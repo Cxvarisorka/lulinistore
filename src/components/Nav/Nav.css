@@ -154,6 +154,7 @@ nav ul{
     opacity: 0;
     height: auto;
     max-height: 600px;
+    overflow-y: scroll;
     gap: 2rem;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -324,9 +325,15 @@ nav ul{
     .main-top-nav,.main-bottom-nav{
         padding: 0 5px;
     }
+    .bottom-nav{
+        justify-content: space-evenly;
+    }
 }
 
 @media (max-width: 580px){
+    .bottom-nav{
+        justify-content: space-between;
+    }
     .main-links{
         display: none;
     }
