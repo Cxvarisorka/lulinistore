@@ -1,0 +1,96 @@
+.main-hero{
+    width: 100%;
+    height: 600px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background-position: center;
+    background-size: cover;
+}
+.hero{
+    width: 60%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 1.5rem;
+}
+.hero p{
+    font-size: 1.1rem;
+    color: #222222;
+}
+.hero h2{
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #222222;
+}
+.hero > div{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-a{
+    color: white;
+    background-color: #222222;
+    padding: 0.9rem 1.3rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    -webkit-transition: 0.25s;
+    -o-transition: 0.25s;
+    transition: 0.25s;
+}
+.btn-a:hover{
+    background-color: #676767;
+    padding: 0.9rem 1.5rem;
+}
+
+
+
+@media (max-width: 1350px){
+    .hero{
+        width: 80%;
+    }
+}
+@media (max-width: 900px){
+    .main-hero{
+        padding: 0 5px;
+        height: 500px;
+    }
+    .hero{
+        width: 100%;
+    }
+}
+
+@media (max-width: 380px){
+    .main-hero{
+        height: 400px;
+    }
+    .hero h2{
+        font-size: 2.5rem;
+    }
+    .hero p{
+        font-size: 1rem;
+    }
+    .btn-a{
+        padding: 0.7rem 1rem;
+    }
+    .btn-a:hover{
+        padding: 0.7rem 1.2rem;
+    }
+}

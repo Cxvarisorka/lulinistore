@@ -1,0 +1,129 @@
+.img-block{
+    width: 36.25rem;
+    height: 31.25rem;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: white;
+}
+.img-block img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #222222;
+    opacity: 0.5;
+}
+.img-info{
+    width: 100%;
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 1rem;
+
+}
+.img-info p{
+    font-size: 1.2rem;
+}
+.img-info h2{
+    font-size: 2.5rem;
+}
+
+.main-categories{
+    width: 100%;
+    height: 550px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 0 2rem;
+}
+.categories{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    gap: 2rem;
+}
+
+.btn-a-categories{
+    color: #222222;
+    background-color: white;
+    padding: 0.9rem 1.3rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    -webkit-transition: 0.25s;
+    -o-transition: 0.25s;
+    transition: 0.25s;
+}
+.btn-a-categories:hover{
+    background-color: rgb(208, 208, 208);
+}
+
+@media (max-width: 1350px){
+    .main-categories{
+        height: 450px;
+        padding: 0 1rem;
+    }
+    .categories{
+        gap: 1rem;
+    }
+    .img-block{
+        width: 30rem;
+        height: 25rem;
+    }
+
+}
+
+@media (max-width: 800px){
+    .main-categories{
+        height: 100%;
+        padding: 2rem;
+    }
+    .categories{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        gap: 2rem;
+    }
+    .img-block{
+        width: 35rem;
+        height: 30rem;
+    }
+}
+
+@media (max-width: 550px){
+    .img-block{
+        width: 100%;
+    }
+}
