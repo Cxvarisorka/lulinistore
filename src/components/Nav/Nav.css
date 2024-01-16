@@ -152,10 +152,8 @@ nav ul{
     display: -webkit-box;
     display: -ms-flexbox;
     opacity: 0;
-    display: flex;
     height: auto;
     max-height: 600px;
-    overflow-y: scroll;
     gap: 2rem;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -165,17 +163,19 @@ nav ul{
         -ms-flex-pack: justify;
             justify-content: space-between;
     top: 150px;
-    right: -400px;
     -webkit-transition: 1s;
     -o-transition: 1s;
     transition: 1s;
     padding: 1rem;
     background-color: white;
+    right: 0;
+    display: flex;
+    visibility: hidden;
 }
 
 .cart-display{
-    right: 0;
     opacity: 1;
+    visibility: visible;
 }
 
 .cart ul{
