@@ -3,13 +3,20 @@ import Hero from "../components/Hero/Hero.js";
 import Categories from "../components/Categories/Categories.js";
 import CollectionHero from "../components/CollectionHero/CollectionHero.js";
 
+import { motion } from 'framer-motion';
+
+
 function LandingPage() {
   return (
-    <div>
+    <motion.div 
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+    >
       <Hero></Hero>
       <Categories></Categories>
       <CollectionHero></CollectionHero>
-    </div>
+    </motion.div>
   );
 }
 

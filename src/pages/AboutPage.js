@@ -5,11 +5,19 @@ import './AboutPage.css';
 import about1 from '../imgs/Black and White Minimaiist Fashion Instagram Post.png';
 import about2 from '../imgs/Black and Grey Minimalist New Fashion Style Instagram Post.png';
 
+import {motion} from 'framer-motion';
+
 function AboutPost({ heading, subHeading, text, img, imgPosition }) {
     const flexDirection = imgPosition === 'left' ? 'row' : 'row-reverse';
   
     return (
-        <div className="main-about">
+        <motion.div 
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}} 
+
+            className="main-about"
+        >
             <div style={{ display: 'flex', flexDirection }}>
                 <div>
                     <h1 id="heading">{heading}</h1>
@@ -18,7 +26,7 @@ function AboutPost({ heading, subHeading, text, img, imgPosition }) {
                 </div>
                 <img src={img} alt="Post" />
             </div>
-        </div>
+        </motion.div>
       
     );
 }

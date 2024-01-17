@@ -9,6 +9,10 @@
 }
 
 body{
+  overflow-x:hidden;
+}
+
+div{
   overflow-x: hidden;
 }
 

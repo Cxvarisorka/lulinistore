@@ -17,6 +17,7 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
+
 import SocialIcons from "../icons.js";
 
 // Main nav icons

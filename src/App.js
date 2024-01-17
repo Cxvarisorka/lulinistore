@@ -1,34 +1,17 @@
 import React from "react";
-import LandingPage from "./pages/LandingPage.js";
-import CatalogPage from "./pages/CatalogPage.js";
+
+// Components
+
 import Nav from "./components/Nav/Nav.js";
 import Footer from "./components/Footer/Footer.js";
-import { Route,Routes } from "react-router-dom";
-import AboutPage from "./pages/AboutPage.js";
-import ContactPage from "./pages/ContactPage.js";
-
-async function AccountsRequest(){
-  try{
-    const json = await fetch('http://127.0.0.1:5000/accounts');
-    const data = await json.json();
-    console.log(data)
-  } catch(err){
-    console.log(err)
-  }
-}
+import AnimatedRoutes from "./pages/AnimatedRoutes.js";
 
 function App() {
-  AccountsRequest();
   return (
     <>
       <Nav></Nav>
       <div>
-        <Routes>
-          <Route path="/" element={<LandingPage />}/>
-          <Route path="/catalog" element={<CatalogPage />}/>
-          <Route path="/about" element={<AboutPage />}></Route>
-          <Route path="/contact" element={<ContactPage />}></Route>
-        </Routes>
+        <AnimatedRoutes></AnimatedRoutes>
       </div>
       <Footer></Footer>
     </>
