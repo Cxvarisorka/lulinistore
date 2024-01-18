@@ -37,7 +37,7 @@
     font-weight: 900;
     color: #222222;
 }
-.hero > div{
+.hero-btns{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

@@ -11,16 +11,15 @@ import Reveal from "../reveal.js";
 function Hero(){
     return (
         <div className="main-hero" style={{backgroundImage: `url(${heroImg})`}}>
-            <div className="hero">
-                <Reveal>
+                <div className="hero">
                     <p>LuliniStore 2023/24</p>
                     <h2>NEW<br></br>COLLECTION</h2>
-                </Reveal>
-                <div>
-                    <Link to="/catalog" className="btn-a">Shop women</Link>
-                    <Link to="/catalog" className="btn-a">Shop men</Link> 
+                    
+                    <div className="hero-btns">
+                        <Link to="/catalog" className="btn-a">Shop women</Link>
+                        <Link to="/catalog" className="btn-a">Shop men</Link> 
+                    </div>
                 </div>
-            </div>
         </div>
     )
 }

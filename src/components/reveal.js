@@ -3,7 +3,7 @@ import {motion, useAnimation, useInView} from 'framer-motion';
 
 function Reveal({children}) {
     return (
-        <div style={{position: 'relative', overflow:'hidden'}}>
+        <div style={{position: 'relative', overflow: 'hidden'}}>
             <motion.div
                 variants={{
                     hidden: {opacity:0,y:75},
