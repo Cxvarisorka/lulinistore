@@ -80,7 +80,7 @@ const Nav = () => {
             <Link to="/"><img src={logo} alt="Logo" /></Link>
             <ul className={`main-links ${openNav ? 'display' : ''}`}>
               {mainNavItems.map((elem, i) => (
-                <li key={i}><Link to={elem.link}>{elem.name}</Link></li>
+                <li key={i}><Link onClick={handleBarClick} to={elem.link}>{elem.name}</Link></li>
               ))}
             </ul>
             <ul className="icon-links">
