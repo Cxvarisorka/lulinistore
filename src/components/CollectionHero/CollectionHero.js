@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 
 import { Link } from "react-router-dom";
 
@@ -21,4 +21,4 @@ function CollectionHero(){
     )
 }
 
-export default CollectionHero;
+export default memo(CollectionHero);

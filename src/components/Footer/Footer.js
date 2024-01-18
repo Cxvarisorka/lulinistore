@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import SocialIcons from "../icons.js";
 
 import './Footer.css';
@@ -27,4 +27,4 @@ function Footer(){
     )
 }
 
-export default Footer;
+export default memo(Footer);

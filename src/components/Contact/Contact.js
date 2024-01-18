@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,memo } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './Contact.css';
@@ -57,7 +57,7 @@ function ContactInfo(){
             <h2>We’re here to help you!</h2>
             <p>Have a question, comment, or brilliant idea you'd like to share? Send us a little note below - we love to hear from you and will always reply!</p>
             <div className="info-divs-main">
-                {infoObjs.map((el,i) => <ContactInfoDivs icon={el.icon} title={el.title} text={el.text}/>)}
+                {infoObjs.map((el,i) => <ContactInfoDivs key={i} icon={el.icon} title={el.title} text={el.text}/>)}
             </div>
         </div>
     )
@@ -74,4 +74,4 @@ function Contact(){
     );
 }
 
-export default Contact;
+export default memo(Contact);

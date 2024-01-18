@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import './PageHero.css';
 import { Link } from "react-router-dom";
 
@@ -11,4 +11,4 @@ function PageHero({title,from,to}){
     )
 }
 
-export default PageHero;
+export default memo(PageHero);

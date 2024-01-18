@@ -1,4 +1,4 @@
-import React from "react";
+import React,{memo} from "react";
 
 import './Spining.css';
 
@@ -8,4 +8,4 @@ function Spining(){
     )
 }
 
-export default Spining;
+export default memo(Spining);
