@@ -109,7 +109,8 @@ const Nav = () => {
           <p onClick={clearCart}>Clear cart.</p>
         </div>
         <div id="btn-cart">
-          <button>View my cart</button>
+          <Link to='/cart'><button>View my cart</button></Link>
+          
           <button>Go to checkout</button>
         </div>
       </div>

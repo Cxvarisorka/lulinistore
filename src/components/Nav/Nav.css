@@ -95,6 +95,7 @@ nav{
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    transition: 0.25s;
 }
 
 .main-links a{
