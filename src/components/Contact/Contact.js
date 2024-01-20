@@ -16,7 +16,7 @@ const timeIcon = <FontAwesomeIcon icon={faClock}/>;
 
 function ContactForm(){
     return (
-        <form action="https://formsubmit.co/14b3cc54bd5808d388a19d560256e654" method="POST">
+        <form id="contact-form" action="https://formsubmit.co/14b3cc54bd5808d388a19d560256e654" method="POST">
             {/* Configuration */}
             <input type="text" name="_honey" style={{display:'none'}} />
             <input type="hidden" name="_captcha" value="false" /> 
