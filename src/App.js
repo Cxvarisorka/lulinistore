@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 // Components
 
@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer.js";
 import AnimatedRoutes from "./pages/AnimatedRoutes.js";
 
 function App() {
+
   return (
     <>
       <Nav></Nav>

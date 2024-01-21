@@ -36,7 +36,7 @@ const Nav = () => {
 
   const total = useMemo(() => cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0), [cartItems]);
 
-  const count = cartItems.length;
+  const count = cartItems.reduce((cur,red) => cur + red.quantity,0);
 
   const mainNavItems = useMemo(() => [
     { name: 'Home', link: '/' },

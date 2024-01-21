@@ -8,10 +8,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faX } from "@fortawesome/free-solid-svg-icons";
+
 import Spining from "../Spining/Spininig.js";
 
 const heartIcon = <FontAwesomeIcon icon={faHeart} />;
 const cartIcon = <FontAwesomeIcon icon={faCartShopping} />;
+const eyeIcon = <FontAwesomeIcon icon={faEye}/>
+const shopIcon = <FontAwesomeIcon icon={faShoppingCart}/>
+const closeIcon = <FontAwesomeIcon icon={faX} />
 
 function SortBy({ selectedSort, handleSortChange, sortOptions }) {
   return (
@@ -44,7 +51,7 @@ function Categories({ categories, selectedCategory, handleCategoryChange }) {
   );
 }
 
-function Product({ category, description, image, price, rating, title, addToCart }) {
+function Product({ category, description, image, price, rating, title, addToCart, openPopup }) {
   let formatedTitle;
   if (title.length >= 26) {
     formatedTitle = [...title].filter((chr, i) => i < 26).join('');
@@ -52,9 +59,17 @@ function Product({ category, description, image, price, rating, title, addToCart
   } else {
     formatedTitle = title;
   }
+
   return (
     <div className="product">
-      <img src={image} alt={title} />
+      <div className="top-info">
+        <img src={image} alt={title} />
+        <div>
+          <p>See More</p>
+          <button onClick={openPopup}>{eyeIcon}</button>
+        </div>
+      </div>
+      
       <div className="info">
         <p>{formatedTitle}</p>
         <p>Category: {category}</p>
@@ -63,6 +78,58 @@ function Product({ category, description, image, price, rating, title, addToCart
           <button>{heartIcon} Add To Wishlist</button>
           <button onClick={addToCart}>{cartIcon} Add To Cart</button>
         </div>
+      </div>
+    </div>
+  )
+}
+
+function Popup({product,closePopup}){
+  const { addToCart } = useContext(CartContext);
+  const [quantity,setQuantity] = useState(1);
+  const maxChar = 200;
+  let formatedDescription;
+
+  if(product.description.length > maxChar){
+    formatedDescription = ([...product.description].filter((chr,i) => i <= 200)).join('') + '...';
+  } else{
+    formatedDescription = product.description;
+  }
+
+  const handlePlusClick = function () {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const handleMinusClick = function () {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
+
+  const handleAddToCart = () => {
+    const updatedProduct = { ...product, quantity }; // Create a new object with updated quantity
+    addToCart(updatedProduct); // Add the updated product to the cart
+    closePopup(); // Close the popup after adding to cart
+  };
+
+  return (
+    <div className="pop-up">
+      <img src={product.image} alt={product.title}/>
+      <div>
+        <p id="close-icon" onClick={closePopup}>{closeIcon}</p>
+        <p className={`${product.rating.count ? 'in-stock' : 'out-stock'} stock`}>In Stock</p>
+        <p id="product-title">{product.title}</p>
+        <p id="product-price">${product.price}</p>
+        <p id="product-description">{formatedDescription}</p>
+        <div>
+          <label>Qty:</label>
+          <div className="quantity-layot">
+            <p onClick={handleMinusClick} className="operation-quant">-</p>
+            <p>{quantity}</p>
+            <p onClick={handlePlusClick} className="operation-quant">+</p>
+          </div>
+        </div>
+        
+        <button id="product-add" onClick={handleAddToCart}>{shopIcon} Add To Cart</button>
       </div>
     </div>
   )
@@ -78,6 +145,15 @@ function Store() {
   const [selectedSort, setSelectedSort] = useState('name-asc');
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8); // Number of products per page
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const openPopup = (product) => {
+    setSelectedProduct(product);
+  };
+
+  const closePopup = () => {
+    setSelectedProduct(null);
+  };
 
   const { addToCart } = useContext(CartContext);
 
@@ -165,7 +241,13 @@ function Store() {
 
 
   return (
-    <div>
+    <div className="mn-store">
+      {selectedProduct && (
+          <>
+            <Popup product={selectedProduct} closePopup={closePopup}></Popup>
+            <div className="blur"></div>
+          </>
+        )}
       <div className="main-store">
         <div className="search-bar">
           <SortBy
@@ -192,6 +274,7 @@ function Store() {
                 price={product.price}
                 rating={product.rating}
                 addToCart={() => addToCart(product)}
+                openPopup={() => openPopup(product)}
               />
             ))}
           </div>

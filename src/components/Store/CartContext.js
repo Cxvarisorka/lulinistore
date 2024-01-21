@@ -19,7 +19,12 @@ export const CartProvider = ({ children }) => {
       setCartItems(updatedCartItems);
     } else {
       // If the product is not in the cart, add it with a quantity of 1
-      setCartItems((prevItems) => [...prevItems, { ...product, quantity: 1 }]);
+      if(product.quantity){
+        setCartItems((prevItems) => [...prevItems, product]);
+      } else{
+        setCartItems((prevItems) => [...prevItems, { ...product, quantity: 1 }]);
+      }
+      
     }
   };
 
