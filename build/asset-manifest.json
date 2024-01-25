@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.762f0107.css",
+    "main.js": "/static/js/main.83ee00f3.js",
+    "static/media/Black and White Minimaiist Fashion Instagram Post.png": "/static/media/Black and White Minimaiist Fashion Instagram Post.0a39d0e301053d6c08b4.png",
+    "static/media/Black and Grey Minimalist New Fashion Style Instagram Post.png": "/static/media/Black and Grey Minimalist New Fashion Style Instagram Post.a047f0e9eb1eb17d4c71.png",
+    "static/media/jewelry.png": "/static/media/jewelry.1b373b521219ad873c33.png",
+    "static/media/hero.png": "/static/media/hero.7ad7c0802544a95b5413.png",
+    "static/media/womans.png": "/static/media/womans.be71c6cbaa8b97372c76.png",
+    "static/media/menfashion.png": "/static/media/menfashion.31aa622a20471424baf2.png",
+    "static/media/man.png": "/static/media/man.e30004fcfc494f20398a.png",
+    "index.html": "/index.html",
+    "main.762f0107.css.map": "/static/css/main.762f0107.css.map",
+    "main.83ee00f3.js.map": "/static/js/main.83ee00f3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.762f0107.css",
+    "static/js/main.83ee00f3.js"
+  ]
+}
