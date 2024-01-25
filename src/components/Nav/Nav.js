@@ -46,7 +46,7 @@ const Nav = () => {
   ], []);
 
   const mainNavIcons = useMemo(() => [
-    { icon: profileIcon, link: '#' },
+    { icon: profileIcon, link: '/authentication' },
     { icon: heartIcon, link: '#' }
   ], []);
 
@@ -109,7 +109,7 @@ const Nav = () => {
           <p onClick={clearCart}>Clear cart.</p>
         </div>
         <div id="btn-cart">
-          <Link to='/cart'><button>View my cart</button></Link>
+          <Link to='/cart' onClick={handleCartClick}><button>View my cart</button></Link>
           
           <button>Go to checkout</button>
         </div>

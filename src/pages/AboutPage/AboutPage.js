@@ -1,12 +1,11 @@
 import React from "react";
-import PageHero from "../components/PageHero/PageHero.js";
+import PageHero from "../../components/PageHero/PageHero.js";
 import './AboutPage.css';
 
-import about1 from '../imgs/Black and White Minimaiist Fashion Instagram Post.png';
-import about2 from '../imgs/Black and Grey Minimalist New Fashion Style Instagram Post.png';
+import about1 from '../../imgs/Black and White Minimaiist Fashion Instagram Post.png';
+import about2 from '../../imgs/Black and Grey Minimalist New Fashion Style Instagram Post.png';
 
-import {motion} from 'framer-motion';
-import Reveal from "../components/reveal.js";
+import Reveal from "../../components/reveal.js";
 
 function AboutPost({ heading, subHeading, text, img, imgPosition }) {
     const flexDirection = imgPosition === 'left' ? 'row' : 'row-reverse';

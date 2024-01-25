@@ -1,0 +1,85 @@
+#sign-in input,#sign-up input{
+    padding: 0.9rem;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #222;
+}
+
+#sign-in h2, #sign-up h2{
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+#sign-in,#sign-up{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.main-auth button{
+    border-radius: 5px;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    background-color: #222;
+    border: 1px solid #222;
+    color: white;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.main-auth button:hover{
+    background-color: transparent;
+    color: #222;
+}
+
+.main-auth{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.auth{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+}
+
+.hr-auth{
+    height: 800px;
+    width: 1px;
+    background-color: gray;
+}
+
+@media (max-width: 1350px){
+    .auth{
+        width: 80%;
+    }
+}
+
+@media (max-width: 900px){
+    .main-auth{
+        padding: 0 1rem;
+    }
+    .auth{
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px){
+    .main-auth{
+        padding: 0 1rem;
+    }
+    .auth{
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .hr-auth{
+        height: 1px;
+        width: 100%;
+    }
+}

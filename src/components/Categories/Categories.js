@@ -2,6 +2,10 @@ import React,{useState,useEffect,memo} from "react";
 import { Link } from "react-router-dom";
 import './Cageories.css';
 
+import menFashion from '../../imgs/menfashion.png';
+import womenFashion from '../../imgs/womans.png';
+import jewelery from '../../imgs/jewelry.png';
+
 function CateDiv({category}){
     const [img,setImg] = useState({});
 
@@ -20,7 +24,7 @@ function CateDiv({category}){
 
     return (
         <div className="img-block">
-            <img src={img[1]?.urls.raw} height={500} width={580}/>
+            <img src={img[2]?.urls.raw} height={500} width={580}/>
             <div className="overlay"></div>
             <div className="img-info">
                 <p>{category}</p>
