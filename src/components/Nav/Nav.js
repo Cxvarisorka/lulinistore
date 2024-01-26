@@ -88,10 +88,10 @@ const Nav = () => {
               {mainNavIcons.map((elem, i) => (
                 <li key={i}><Link aria-label={elem.ariaLabel} to={elem.link}>{elem.icon}</Link></li>
               ))}
-              <div id="cart-count">
+              <li id="cart-count">
                 {displayCount > 0 ? <p id="red-circle">{count}</p> : null}
-                <li style={{cursor:'pointer'}} onClick={handleCartClick}>{cartIcon}</li>
-              </div>
+                <p style={{cursor:'pointer'}} onClick={handleCartClick}>{cartIcon}</p>
+              </li>
 
             </ul>
             <button onClick={handleBarClick} aria-label="open navbar" className="bar-btn">{barsIcon}</button>
