@@ -30,7 +30,7 @@ function ContactForm(){
             <input type="text" placeholder="Name" name="name" id="name"/>
             <input type="email" placeholder="Email" name="email" id="email"/>
             <textarea placeholder="Message" id="message" name="message"></textarea>
-            <button>Send</button>
+            <button aria-label="Send message">Send</button>
         </form>
     )
 }

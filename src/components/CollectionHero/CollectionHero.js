@@ -13,8 +13,8 @@ function CollectionHero(){
                 <p>Be Trendy</p>
                 <h2>NEW<br></br>COLLECTION</h2>
                 <div>
-                    <Link to="/catalog">Shop men</Link>
-                    <Link to="/catalog">Shop women</Link>
+                    <Link to="/catalog" aria-label="Shop now">Shop men</Link>
+                    <Link to="/catalog" aria-label="Shop now">Shop women</Link>
                 </div>
             </div>
         </div>

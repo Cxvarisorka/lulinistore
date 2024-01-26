@@ -23,16 +23,16 @@ function TrItem({ product, index, addToCart, deleteItem }) {
       </td>
       <td>
         <div className="quantity-layot">
-          <p onClick={() => deleteItem(product)} className="operation-quant">-</p>
+          <button id="math-operation" aria-label="Minus one of same product" onClick={() => deleteItem(product)} className="operation-quant">-</button>
           <p>{product.quantity}</p>
-          <p onClick={() => addToCart(product)} className="operation-quant">+</p>
+          <button id="math-operation" aria-label="Plus one of same product" onClick={() => addToCart(product)} className="operation-quant">+</button>
         </div>
       </td>
       <td>
         <p>{product.quantity * product.price}$</p>
       </td>
       <td>
-        <p style={{ cursor: 'pointer' }} onClick={() => deleteItem(product)}>{trashIcon}</p>
+        <button aria-label="Delete product" id="delete-product" onClick={() => deleteItem(product)}>{trashIcon}</button>
       </td>
     </tr>
   );
@@ -128,7 +128,7 @@ function Cart() {
       </table>
       <div className="pagination">
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-          <button key={page} onClick={() => handlePageChange(page)}>
+          <button aria-label={'Page ' + page} key={page} onClick={() => handlePageChange(page)}>
             {page}
           </button>
         ))}
@@ -145,14 +145,14 @@ function Cart() {
               <label>Have a promo code for checkout?</label>
               <div id="promo-div-input">
                 <input placeholder={placeHolder} value={promoInput} onChange={handlePromoInput} type="text" id="promo-code" />
-                <button id="promo-div-apply" type="button" onClick={handlePromoClick}>Apply</button>
+                <button aria-label="Apply promo code" id="promo-div-apply" type="button" onClick={handlePromoClick}>Apply</button>
               </div>
             </div>
             <div id="promo-div">
               <label>Add a note to your order.</label>
               <textarea></textarea>
             </div>
-            <Link id="link-to-catalog" to='/catalog'>{arrowIcon} Continue Shopping</Link>
+            <Link aria-label="Back to shopping" id="link-to-catalog" to='/catalog'>{arrowIcon} Continue Shopping</Link>
           </form>
           <div id="total-info">
             <p id="total-info-title">Order Summary</p>
@@ -166,8 +166,8 @@ function Cart() {
               <p>{totalPrice}$</p>
             </div>
             <div id="total-buttons">
-              <button onClick={clearCart}>Clear Cart</button>
-              <button>Go To Checkout</button>
+              <button aria-label="Clear whole cart" onClick={clearCart}>Clear Cart</button>
+              <button aria-label="Go To Checkout">Go To Checkout</button>
             </div>
             <p>LuliniShop process all orders in USD. Shipping & taxes calculated at checkout.</p>
 

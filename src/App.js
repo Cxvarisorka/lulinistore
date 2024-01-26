@@ -11,9 +11,9 @@ function App() {
   return (
     <>
       <Nav></Nav>
-      <div>
+      <main>
         <AnimatedRoutes></AnimatedRoutes>
-      </div>
+      </main>
       <Footer></Footer>
     </>
   );

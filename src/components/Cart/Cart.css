@@ -7,6 +7,7 @@
 .td-product img{
     width: 100px;
     height: 130px;
+    object-fit:cover;
 }
 
 .cart-page{
@@ -44,6 +45,19 @@ td,th{
     text-align: center;
     padding: 5px;
     width: 100%;
+}
+
+#delete-product{
+    font-size: 1.2rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#math-operation{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .quantity-layot{

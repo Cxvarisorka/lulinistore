@@ -14,7 +14,7 @@ function Footer(){
                     </div>
                     <form>
                         <input type="email" required name="email" placeholder="Email"/>
-                        <button>Submit</button>
+                        <button aria-label="Submit email">Submit</button>
                     </form>
                 </div>
             </div>

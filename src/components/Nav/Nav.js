@@ -22,7 +22,7 @@ const LiItem = React.memo(({ image, title, quantity, price, deleteItem }) => {
       <div>
         <p style={{ fontSize: '1.1rem' }}>{truncatedTitle}</p>
         <p style={{ fontSize: '1.05rem' }}>{quantity} X {price}$</p>
-        <button onClick={deleteItem}>{trashIcon}</button>
+        <button onClick={deleteItem} aria-label="Delete product">{trashIcon}</button>
       </div>
     </li>
   );
@@ -46,8 +46,8 @@ const Nav = () => {
   ], []);
 
   const mainNavIcons = useMemo(() => [
-    { icon: profileIcon, link: '/authentication' },
-    { icon: heartIcon, link: '#' }
+    { icon: profileIcon, link: '/authentication', ariaLabel: 'Registration' },
+    { icon: heartIcon, link: '#', ariaLabel: 'Wishlist' }
   ], []);
 
   
@@ -77,7 +77,7 @@ const Nav = () => {
         </div>
         <div className="main-bottom-nav">
           <div className="bottom-nav">
-            <Link to="/"><img src={logo} alt="Logo" /></Link>
+            <Link to="/" aria-label="Home Page"><img src={logo} alt="Logo" /></Link>
             <ul className={`main-links ${openNav ? 'display' : ''}`}>
               {mainNavItems.map((elem, i) => (
                 <li key={i}><Link onClick={handleBarClick} to={elem.link}>{elem.name}</Link></li>
@@ -86,7 +86,7 @@ const Nav = () => {
             <ul className="icon-links">
 
               {mainNavIcons.map((elem, i) => (
-                <li key={i}><Link to={elem.link}>{elem.icon}</Link></li>
+                <li key={i}><Link aria-label={elem.ariaLabel} to={elem.link}>{elem.icon}</Link></li>
               ))}
               <div id="cart-count">
                 {displayCount > 0 ? <p id="red-circle">{count}</p> : null}
@@ -94,7 +94,7 @@ const Nav = () => {
               </div>
 
             </ul>
-            <button onClick={handleBarClick} className="bar-btn">{barsIcon}</button>
+            <button onClick={handleBarClick} aria-label="open navbar" className="bar-btn">{barsIcon}</button>
           </div>
         </div>
       </div>
@@ -110,7 +110,6 @@ const Nav = () => {
         </div>
         <div id="btn-cart">
           <Link to='/cart' onClick={handleCartClick}><button>View my cart</button></Link>
-          
           <button>Go to checkout</button>
         </div>
       </div>

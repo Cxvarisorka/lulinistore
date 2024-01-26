@@ -15,12 +15,12 @@ const youtubeIcon = <FontAwesomeIcon icon={faYoutube}/>;
 const githubIcon = <FontAwesomeIcon icon={faGithub}/>;
 
 function SocialIcons(){
-    const socialMediaIcons = [{icon:instagramIcon, link:'https://www.instagram.com/lulinitransport/'},{icon:facebookIcon, link:'https://www.facebook.com/Luka.Tskhvaradze'},{icon:youtubeIcon, link:'https://www.youtube.com/@LuliniTransport'},{icon:githubIcon, link:'https://github.com/Cxvarisorka'}]
+    const socialMediaIcons = [{icon:instagramIcon, link:'https://www.instagram.com/lulinitransport/', ariaLabel: 'Instagram link'},{icon:facebookIcon, link:'https://www.facebook.com/Luka.Tskhvaradze', ariaLabel: 'Facebook link'},{icon:youtubeIcon, link:'https://www.youtube.com/@LuliniTransport', ariaLabel: 'Youtube link'},{icon:githubIcon, link:'https://github.com/Cxvarisorka', ariaLabel: 'Github link'}]
 
     return (
         <ul className="social-links">
             {socialMediaIcons.map((elem,i) => {
-                return <li key={i}><a href={elem.link} target='blank_'>{elem.icon}</a></li>
+                return <li key={i}><a href={elem.link} target='blank_' aria-label={elem.ariaLabel}>{elem.icon}</a></li>
             })}
         </ul>
     )
