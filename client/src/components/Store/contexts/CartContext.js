@@ -12,7 +12,7 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (product) => {
+  const addToCart = (product,quantity) => {
     // Check if the product is already in the cart
     const existingProductIndex = cartItems.findIndex((item) => item.id === product.id);
 
@@ -21,7 +21,7 @@ export const CartProvider = ({ children }) => {
       const updatedCartItems = [...cartItems];
       updatedCartItems[existingProductIndex] = {
         ...updatedCartItems[existingProductIndex],
-        quantity: updatedCartItems[existingProductIndex].quantity + 1,
+        quantity: updatedCartItems[existingProductIndex].quantity + quantity,
       };
       setCartItems(updatedCartItems);
     } else {
@@ -29,13 +29,13 @@ export const CartProvider = ({ children }) => {
       if(product.quantity){
         setCartItems((prevItems) => [...prevItems, product]);
       } else{
-        setCartItems((prevItems) => [...prevItems, { ...product, quantity: 1 }]);
+        setCartItems((prevItems) => [...prevItems, { ...product, quantity }]);
       }
       
     }
   };
 
-  const deleteItem = (product) => {
+  const deleteItem = (product,quantity) => {
     // Find the index of the product in the cart
     const productIndex = cartItems.findIndex((item) => item.id === product.id);
   
@@ -43,11 +43,11 @@ export const CartProvider = ({ children }) => {
       // If the product is found in the cart
       const updatedCartItems = [...cartItems];
   
-      if (updatedCartItems[productIndex].quantity > 1) {
+      if (updatedCartItems[productIndex].quantity > quantity) {
         // If the quantity is greater than 1, decrease the quantity by 1
         updatedCartItems[productIndex] = {
           ...updatedCartItems[productIndex],
-          quantity: updatedCartItems[productIndex].quantity - 1,
+          quantity: updatedCartItems[productIndex].quantity - quantity,
         };
       } else {
         // If the quantity is 1, remove the product from the cart

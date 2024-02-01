@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
 
-import { CartContext } from "./CartContext.js";
+import { CartContext } from "./contexts/CartContext.js";
 
-import './Store.css';
+import "./Store.css";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
@@ -13,12 +13,13 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 
 import Spining from "../Spining/Spininig.js";
+import useProducts from "../../Hooks/useProducts.js";
 
 const heartIcon = <FontAwesomeIcon icon={faHeart} />;
 const cartIcon = <FontAwesomeIcon icon={faCartShopping} />;
-const eyeIcon = <FontAwesomeIcon icon={faEye}/>
-const shopIcon = <FontAwesomeIcon icon={faShoppingCart}/>
-const closeIcon = <FontAwesomeIcon icon={faX} />
+const eyeIcon = <FontAwesomeIcon icon={faEye} />;
+const shopIcon = <FontAwesomeIcon icon={faShoppingCart} />;
+const closeIcon = <FontAwesomeIcon icon={faX} />;
 
 function SortBy({ selectedSort, handleSortChange, sortOptions }) {
   return (
@@ -51,11 +52,11 @@ function Categories({ categories, selectedCategory, handleCategoryChange }) {
   );
 }
 
-function Product({ category, description, image, price, rating, title, addToCart, openPopup }) {
+function Product({ category, image, price, title, addToCart, openPopup }) {
   let formatedTitle;
   if (title.length >= 26) {
-    formatedTitle = [...title].filter((chr, i) => i < 26).join('');
-    formatedTitle += '...'
+    formatedTitle = [...title].filter((chr, i) => i < 26).join("");
+    formatedTitle += "...";
   } else {
     formatedTitle = title;
   }
@@ -69,7 +70,7 @@ function Product({ category, description, image, price, rating, title, addToCart
           <button onClick={openPopup}>{eyeIcon}</button>
         </div>
       </div>
-      
+
       <div className="info">
         <p>{formatedTitle}</p>
         <p>Category: {category}</p>
@@ -80,18 +81,19 @@ function Product({ category, description, image, price, rating, title, addToCart
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-function Popup({product,closePopup}){
+function Popup({ product, closePopup }) {
   const { addToCart } = useContext(CartContext);
-  const [quantity,setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1);
   const maxChar = 200;
   let formatedDescription;
 
-  if(product.description.length > maxChar){
-    formatedDescription = ([...product.description].filter((chr,i) => i <= 200)).join('') + '...';
-  } else{
+  if (product.description.length > maxChar) {
+    formatedDescription =
+      [...product.description].filter((chr, i) => i <= 200).join("") + "...";
+  } else {
     formatedDescription = product.description;
   }
 
@@ -106,46 +108,57 @@ function Popup({product,closePopup}){
   };
 
   const handleAddToCart = () => {
-    const updatedProduct = { ...product, quantity }; // Create a new object with updated quantity
-    addToCart(updatedProduct); // Add the updated product to the cart
+    addToCart(product, quantity);
     closePopup(); // Close the popup after adding to cart
   };
 
   return (
     <div className="pop-up">
-      <img src={product.image} alt={product.title}/>
+      <img src={product.image} alt={product.title} />
       <div>
-        <p id="close-icon" onClick={closePopup}>{closeIcon}</p>
-        <p className={`${product.rating.count ? 'in-stock' : 'out-stock'} stock`}>In Stock</p>
+        <p id="close-icon" onClick={closePopup}>
+          {closeIcon}
+        </p>
+        <p
+          className={`${product.rating.count ? "in-stock" : "out-stock"} stock`}
+        >
+          In Stock
+        </p>
         <p id="product-title">{product.title}</p>
         <p id="product-price">${product.price}</p>
         <p id="product-description">{formatedDescription}</p>
         <div>
           <label>Qty:</label>
           <div className="quantity-layot">
-            <p onClick={handleMinusClick} className="operation-quant">-</p>
+            <p onClick={handleMinusClick} className="operation-quant">
+              -
+            </p>
             <p>{quantity}</p>
-            <p onClick={handlePlusClick} className="operation-quant">+</p>
+            <p onClick={handlePlusClick} className="operation-quant">
+              +
+            </p>
           </div>
         </div>
-        
-        <button id="product-add" onClick={handleAddToCart}>{shopIcon} Add To Cart</button>
+
+        <button id="product-add" onClick={handleAddToCart}>
+          {shopIcon} Add To Cart
+        </button>
       </div>
     </div>
-  )
+  );
 }
 
 function Store() {
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
   const [productsQuantity, setProductsQuantity] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [selectedSort, setSelectedSort] = useState('name-asc');
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedSort, setSelectedSort] = useState("name-asc");
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8); // Number of products per page
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const {categoriesArr, productsArr} = useProducts();
 
   const openPopup = (product) => {
     setSelectedProduct(product);
@@ -158,54 +171,40 @@ function Store() {
   const { addToCart } = useContext(CartContext);
 
   const sortOptions = [
-    { value: 'name-asc', label: 'Alphabetically, A-Z' },
-    { value: 'name-desc', label: 'Alphabetically, Z-A' },
-    { value: 'price-asc', label: 'Price, low to high' },
-    { value: 'price-desc', label: 'Price, high to low' },
-    { value: 'rating-asc', label: 'Rating, low to high' },
-    { value: 'rating-desc', label: 'Rating, high to low' },
+    { value: "name-asc", label: "Alphabetically, A-Z" },
+    { value: "name-desc", label: "Alphabetically, Z-A" },
+    { value: "price-asc", label: "Price, low to high" },
+    { value: "price-desc", label: "Price, high to low" },
+    { value: "rating-asc", label: "Rating, low to high" },
+    { value: "rating-desc", label: "Rating, high to low" },
   ];
-
-  // Fetch products and categories from API
-  useEffect(() => {
-    const fetchData = async () => {
-      const productsResponse = await fetch('https://fakestoreapi.com/products');
-      const productsData = await productsResponse.json();
-
-      const categoriesResponse = await fetch('https://fakestoreapi.com/products/categories');
-      const categoriesData = await categoriesResponse.json();
-
-      setProducts(productsData.filter((item) => item.category !== 'electronics'));
-      setCategories(categoriesData.filter((_, index) => index !== 0));
-    };
-
-    fetchData();
-  }, []);
 
   // Update filtered products when selected category changes
   useEffect(() => {
-    if (selectedCategory === 'all') {
-      setFilteredProducts(products);
+    if (selectedCategory === "all") {
+      setFilteredProducts(productsArr);
     } else {
-      setFilteredProducts(products.filter((item) => item.category === selectedCategory));
+      setFilteredProducts(
+        productsArr.filter((item) => item.category === selectedCategory)
+      );
     }
-  }, [selectedCategory, products]);
+  }, [selectedCategory, productsArr]);
 
   // Update sorted products based on selected sort option
   useEffect(() => {
     const sortProducts = () => {
       const sortArr = [...filteredProducts];
-      if (selectedSort === 'name-asc') {
+      if (selectedSort === "name-asc") {
         sortArr.sort((a, b) => a.title.localeCompare(b.title));
-      } else if (selectedSort === 'name-desc') {
+      } else if (selectedSort === "name-desc") {
         sortArr.sort((a, b) => b.title.localeCompare(a.title));
-      } else if (selectedSort === 'price-asc') {
+      } else if (selectedSort === "price-asc") {
         sortArr.sort((a, b) => a.price - b.price);
-      } else if (selectedSort === 'price-desc') {
+      } else if (selectedSort === "price-desc") {
         sortArr.sort((a, b) => b.price - a.price);
-      } else if (selectedSort === 'rating-asc') {
+      } else if (selectedSort === "rating-asc") {
         sortArr.sort((a, b) => a.rating - b.rating);
-      } else if (selectedSort === 'rating-desc') {
+      } else if (selectedSort === "rating-desc") {
         sortArr.sort((a, b) => b.rating - a.rating);
       }
       setSortedProducts(sortArr);
@@ -222,7 +221,10 @@ function Store() {
   // Calculate current products to display based on pagination
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = sortedProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -239,15 +241,14 @@ function Store() {
     setCurrentPage(1); // Reset current page to 1 when sort changes
   };
 
-
   return (
     <div className="mn-store">
       {selectedProduct && (
-          <>
-            <Popup product={selectedProduct} closePopup={closePopup}></Popup>
-            <div className="blur"></div>
-          </>
-        )}
+        <>
+          <Popup product={selectedProduct} closePopup={closePopup}></Popup>
+          <div className="blur"></div>
+        </>
+      )}
       <div className="main-store">
         <div className="search-bar">
           <SortBy
@@ -257,7 +258,7 @@ function Store() {
           />
           <p>Products: {productsQuantity}</p>
           <Categories
-            categories={categories}
+            categories={categoriesArr}
             selectedCategory={selectedCategory}
             handleCategoryChange={handleCategoryChange}
           />
@@ -273,8 +274,8 @@ function Store() {
                 description={product.description}
                 price={product.price}
                 rating={product.rating}
-                addToCart={() => addToCart(product)}
-                openPopup={() => openPopup(product)}
+                addToCart={() => addToCart(product, 1)}
+                openPopup={() => openPopup(product, 1)}
               />
             ))}
           </div>
@@ -283,11 +284,14 @@ function Store() {
         )}
         {/* Pagination */}
         <ul className="pagination">
-          {Array.from({ length: Math.ceil(sortedProducts.length / productsPerPage) }, (_, i) => (
-            <li key={i} className={currentPage === i + 1 ? "active" : ""}>
-              <button onClick={() => paginate(i + 1)}>{i + 1}</button>
-            </li>
-          ))}
+          {Array.from(
+            { length: Math.ceil(sortedProducts.length / productsPerPage) },
+            (_, i) => (
+              <li key={i} className={currentPage === i + 1 ? "active" : ""}>
+                <button onClick={() => paginate(i + 1)}>{i + 1}</button>
+              </li>
+            )
+          )}
         </ul>
       </div>
     </div>

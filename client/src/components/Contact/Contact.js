@@ -1,4 +1,4 @@
-import React, { useState,memo } from "react";
+import React, { memo } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './Contact.css';

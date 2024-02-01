@@ -1,5 +1,5 @@
-import React,{useEffect,useRef,memo} from "react"
-import {motion, useAnimation, useInView} from 'framer-motion';
+import React,{memo} from "react"
+import {motion} from 'framer-motion';
 
 function Reveal({children}) {
     return (
